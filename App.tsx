@@ -22,6 +22,8 @@ const CONFIG = {
   subheadline: "Ein maßgeschneidertes, digitales System für Nerdhandwerk. Entwickelt, um erstklassige, technische Maßarbeit online sichtbar zu machen, neue Talente anzuziehen und die Planung von individuellen Custom-Projekten komplett zu digitalisieren.",
   primaryCtaText: "Funktionen testen",
   secondaryCtaText: "Direkt-Kontakt",
+  
+  // Zeigt jetzt exakt auf dein hochgeladenes Bild im public-Ordner
   imageUrl: "/Bild.jpg" 
 };
 
@@ -130,7 +132,7 @@ export default function App() {
               {CONFIG.subheadline}
             </p>
 
-            {/* Buttons mit Hover-Animation */}
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
               <button 
                 onClick={() => setDemoActive(true)}
@@ -178,7 +180,7 @@ export default function App() {
 
           </motion.div>
 
-          {/* Rechts: Interaktives 3D-Mockup */}
+          {/* Rechts: Interaktives 3D-Mockup mit Bild-Rendering */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -210,13 +212,19 @@ export default function App() {
 
               {/* Bild-Bereich */}
               <div className="relative rounded-2xl overflow-hidden shadow-inner border border-neutral-200/80 aspect-[4/3] bg-neutral-50 group">
-                <img 
-                  src={CONFIG.imageUrl} 
-                  alt="Nerdhandwerk Werkstatt" 
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent opacity-80" />
-                <div className="absolute bottom-3 left-3 text-white">
+                {CONFIG.imageUrl ? (
+                  <img 
+                    src={CONFIG.imageUrl} 
+                    alt="Nerdhandwerk Werkstatt" 
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-neutral-50 flex flex-col items-center justify-center text-neutral-400 p-4">
+                    <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">[ Visueller Platzhalter ]</span>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent opacity-80 pointer-events-none" />
+                <div className="absolute bottom-3 left-3 text-white pointer-events-none">
                   <span className="text-[8px] font-mono text-neutral-200 uppercase tracking-widest block">Vercel Live-Vorschau</span>
                   <span className="text-xs font-semibold tracking-wide">Custom Tech & Workspace</span>
                 </div>
