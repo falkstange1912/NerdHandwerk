@@ -23,8 +23,8 @@ const CONFIG = {
   primaryCtaText: "Funktionen testen",
   secondaryCtaText: "Direkt-Kontakt",
   
-  // Zeigt jetzt exakt auf dein hochgeladenes Bild im public-Ordner
-  imageUrl: "/Bild.jpg" 
+  // Pfad komplett kleingeschrieben für maximale Kompatibilität auf GitHub/Vercel
+  imageUrl: "/bild.jpg" 
 };
 
 export default function App() {
